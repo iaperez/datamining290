@@ -1,0 +1,22 @@
+Assignment 1
+Ignacio Perez
+
+
+-- What are the types of data available to you?
+I'm reviwing one of the MovieLens datasets (1M), that consists in 1 million of ratings from 6000 users on 4000 movies.
+In particular, the exact number of ratings acording to wc is 1000209.
+I prefer to work with this kind of dataset instead of restricted API.
+
+-- Provide an "interesting" record, explain its properties and why it is interesting
+I think that "one" record cannot be interesting per se, it is necesary to analyze this in all its dimesions.
+In fact, the dimensions that this particular data set is offering are really interesting, because the combination the dimensions of age, gender, and occupation could be useful for any movie reccomendation app.
+One particular record that got my attention is the ratings of user 12: in general this user prefer genders like drama and thriller, but also one movie in the action/adventure cattegory appears: Raiders of the Lost Ark. In the other hand, Dick Tracy is in the bottom of the prefereces of user 12. This specific user seems to prefer drama/thriller movies, so is fascinationg to see how just one actiom movie at the top of his preferences. Probably this kind of information could be considered as a outlier, But findind the movies that are universally trough the users categories could be useful.
+
+-- What are 3 questions you could answer using your data?
+Which movies have top ratings for female users that work on sales and are under 35 years old?
+How many drama movies the doctors under 45 years old see per year?
+What gender/ocupation group under 65 years old prefers drama movies?     
+ 
+
+
+
