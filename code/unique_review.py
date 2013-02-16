@@ -1,6 +1,10 @@
 from mrjob.job import MRJob
 from mrjob.protocol import JSONValueProtocol
 
+import re
+
+WORD_RE = re.compile(r"[\w']+")
+
 class UniqueReview(MRJob):
     INPUT_PROTOCOL = JSONValueProtocol
 
@@ -59,7 +63,7 @@ class UniqueReview(MRJob):
         """
         return [self.mr(self.extract_words, self.count_reviews),
                 self.mr(reducer=self.count_unique_words),
-                self.mr(aggregate_max, self.select_max)]
+                self.mr(self.aggregate_max, self.select_max)]
 
 if __name__ == '__main__':
     UniqueReview.run()
