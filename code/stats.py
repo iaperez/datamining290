@@ -8,7 +8,7 @@ import csv
 total = 0
 minimum = None
 maximum = None
-records = 0 
+records = 0
 donationlist = []
 candidates =  dict()
 paymentstatuslist = dict()
@@ -23,7 +23,7 @@ positiverecords=0
 for row in csv.reader(fileinput.input()):
 	if not fileinput.isfirstline():
 		records+=1
-		value = float(row[9]) 
+		value = float(row[9])
 		contributorname = row[3]
 		candidatename = row[2]
 		paymentstatus = row[11]
@@ -34,7 +34,7 @@ for row in csv.reader(fileinput.input()):
 			negativerecords+=1
 		else:
 			positiverecords+=1
-		
+
 		donationlist.append(value)
 		# Extra calculations to check
 		# without negative contributions!!!!!
@@ -50,19 +50,19 @@ for row in csv.reader(fileinput.input()):
 			candidatesdevolutions[candidatename]+=value
 		else:
 			candidatesdevolutions[candidatename]=value
-		
+
 		#distinct payment statuses
 		if paymentstatus in paymentstatuslist:
 			paymentstatuslist[paymentstatus]+=1
 		else:
 			paymentstatuslist[paymentstatus]=1
-		
+
 		# unique contributors (greedy, just by names)
 		if candidatename in candidatescontributors:
 			candidatescontributors[candidatename].add(contributorname)
 		else:
 			candidatescontributors[candidatename]=set(contributorname)
-		
+
 		if candidatename in candidatescities:
 			citiespercandidate = candidatescities[candidatename]
 			if contributorcity in citiespercandidate:
@@ -96,7 +96,7 @@ records = len(donationlist)
 mean=total/records
 median=0.0
 if records % 2 == 0:
-	median = donationlist[records/2]+donationlist[records/2-1]/2
+	median = (donationlist[records/2]+donationlist[records/2-1])/2
 else:
 	median = donationlist[records/2]
 
@@ -109,7 +109,7 @@ else:
 std = (sum([(value- mean)**2.0 for value in donationlist])/records)**0.5
 
 ##### Print out the stats
-print "           Records: %15d" % records 
+print "           Records: %15d" % records
 print "             Total: %15.5f" % total
 print "           Minimum: %15.5f" % minimum
 print "           Maximum: %15.5f" % maximum
@@ -121,7 +121,7 @@ print "Standard Deviation: %15.5f" % std
 print "--------------------------"
 print
 ##### Comma separated list of unique candidate names
-print "Candidates: %s" % sorted(candidates.keys()) 
+print "Candidates: %s" % sorted(candidates.keys())
 
 print "--------------------------"
 print
@@ -131,17 +131,17 @@ def minmax_normalize(value):
 	###
 	# TODO: replace line below with the actual calculations
 	norm = (value-minimum)/(maximum-minimum)
-  ###
+	###
 	return norm
 
 def z_normalize(value):
-	znorm = (value - mean)/std	
+	znorm = (value - mean)/std
 	return znorm
 
 ##### Normalize some sample values
 print "Min-max normalized values: %r" % map(minmax_normalize, [2500, 50, 250, 35, 8, 100, 19])
 
-print "z normalized values: %r" % map(z_normalize, [2500, 50, 250, 35, 8, 100,     19])
+print "z normalized values: %r" % map(z_normalize, [2500, 50, 250, 35, 8, 100, 19])
 
 # ordering data... i need to learn an elegant way to do this with python :(
 citiespercandidate = dict()

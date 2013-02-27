@@ -13,7 +13,7 @@ class ReviewWordCount(MRJob):
         ignore capitalization."""
         if record['type'] == 'review':
             for word in WORD_RE.findall(record['text']):
-                yield [word.lower(), 1]
+                yield [record['review_id'],word.lower()]
 
     def count_words(self, word, counts):
         """Summarize all the counts by taking the sum."""
