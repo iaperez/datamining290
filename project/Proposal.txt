@@ -1,0 +1,28 @@
+The team behind that movie...
+
+Problem Statement:
+
+Is there any common team/person behind your favorite movies/tv series, beyond the obvious: actors/directors/producers?
+In tv series, the teams behind are not always the same, so some episodes are more interesting than others.
+You can use this information with the "calendar for tv series" idea.
+
+What open data sets might you be working with?
+http://www.linkedmdb.org/ - checkout this for imdb like datasets
+Imdb
+Wikipedia
+http://www.grouplens.org  (movie lens dataset): They have an interesting dataset with movie ratings, that can be used to tv series.
+Videogame dataset?
+Twitter? Facebook? GoodReads API?
+ 
+ Possible ties to Wikipedia (or any Wikimedia related projects)?
+ Yes, to find extra information about movies/tv series
+
+ What challenges do you anticipate running into?
+ API restrictions
+ Data size
+ Data collection
+ Too granular results: there could be not real pattern in the teams behind your favorite shows.
+
+ What skills will a team need to develop to solve this problem?
+ Data analysis
+ Programming skills
