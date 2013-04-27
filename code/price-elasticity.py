@@ -72,8 +72,8 @@ plt.tight_layout()
 
 plt.figure(2)
 
-p =  np.arange(-200,700)
-
+p =  np.arange(0,700)
+q =  np.arange(0,700)
 # considering that: (I understand that this is only for small changes on P and Q...)
 # %DQ/%DP = Elasticity, then:
 # ((Q-1000)/1000)/((P-200)/200) = Elasticity
@@ -89,19 +89,43 @@ p =  np.arange(-200,700)
 # R'(P) = 1000*Elasticity*2*P/200 - 1000*Elasticity*200/200 + 1000 = 0
 # P = (1000*Elasticity*200/200 - 1000)/(1000*Elasticity*2/200)  to max the revenue 
 
-plt.subplot(211)
+plt.subplot(411)
 plt.plot(p, p*((1000*weslope*(p-200)/200)+1000))
-plt.title("P*Q Weekend")
+plt.title("Revenue P*Q Weekend vs. P")
 
-plt.subplot(212)
+plt.subplot(412)
 plt.plot(p, p*((1000*wdslope*(p-200)/200)+1000))
-plt.title("P*Q Weekday")
+plt.title("Revenue P*Q Weekday vs. P")
 
+plt.subplot(413)
+plt.plot(q, q*(((200/weslope)*(q-1000)/1000)+200))
+plt.title("Revenue P*Q Weekend vs. Q")
+plt.annotate("we are interested in the revenue for 100 rooms", 
+								xy = (100,100000), xytext = (300,150000),
+								arrowprops=dict(facecolor='black', shrink=0.05),)
+plt.subplot(414)
+plt.plot(q, q*(((200/wdslope)*(q-1000)/1000)+200))
+plt.title("Revenue P*Q Weekday vs. Q")
+
+#given that I can only sell 100 rooms, 
+# what is the maximum revenue that I can get by selling
+# 100 rooms
+max_rev_wd =  100*(((200/wdslope)*(100-1000)/1000)+200)
+max_rev_we =  100*(((200/weslope)*(100-1000)/1000)+200)
+
+# finally, the maximum price that I can charge for those rooms is
+max_price_wd = max_rev_wd/100
+max_price_we = max_rev_we/100
+
+print "max price on weekend "  + str(max_price_we)
+print "max price on weekday "  + str(max_price_wd)
+
+#this is to get the overall maximum
 we_price_to_max = (1000*weslope - 1000)/(1000*weslope*2/200)
 wd_price_to_max = (1000*wdslope - 1000)/(1000*wdslope*2/200)
 
-print "price to max revenue on weekend " + str(we_price_to_max)
-print "price to max revenue on weekday " + str(wd_price_to_max)
+#print "price to max revenue on weekend " + str(we_price_to_max)
+#print "price to max revenue on weekday " + str(wd_price_to_max)
 
 plt.tight_layout()
 
