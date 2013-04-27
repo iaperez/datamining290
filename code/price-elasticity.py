@@ -73,7 +73,7 @@ plt.tight_layout()
 plt.figure(2)
 
 p =  np.arange(0,700)
-q =  np.arange(0,700)
+q =  np.arange(0,1000)
 # considering that: (I understand that this is only for small changes on P and Q...)
 # %DQ/%DP = Elasticity, then:
 # ((Q-1000)/1000)/((P-200)/200) = Elasticity
